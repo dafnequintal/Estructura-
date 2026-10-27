@@ -1,10 +1,10 @@
 class Nodo:
     def __init__(self, info):
-        self.info = info      # INFO: dato almacenado
-        self.liga = None      # LIGA: apuntador al siguiente nodo (NIL = None)
+        self.info = info     
+        self.liga = None     
 
 
-# ---------------------- UTILIDADES ----------------------
+
 
 def todos_los_nodos(cabezas):
     """Devuelve todos los nodos alcanzables desde las cabezas (sin repetir)."""
@@ -66,7 +66,7 @@ def recorrer(cabezas):
         print("(* = nodo al que apuntan dos o más nodos)")
 
 
-# ---------------------- INSERCIONES (lista principal) ----------------------
+
 
 def insertar_inicio(P, info):
     nuevo = Nodo(info)
@@ -101,7 +101,7 @@ def insertar_medio(P, info, posicion):
     return P
 
 
-# ---------------------- NODOS COMPARTIDOS ----------------------
+
 
 def crear_rama(cabezas):
     """Crea una nueva rama cuyo último nodo apunta a un nodo ya existente."""
@@ -148,7 +148,7 @@ def enlazar(cabezas):
         print(f"Aviso: el nodo '{anterior.info}' y lo que le seguía quedaron desconectados.")
 
 
-# ---------------------- ELIMINAR ----------------------
+
 
 def eliminar(cabezas, dato):
     """Elimina el primer nodo con INFO = dato. Todos los nodos que apuntaban
@@ -162,17 +162,16 @@ def eliminar(cabezas, dato):
         if nodo.liga is objetivo:
             nodo.liga = objetivo.liga
 
-    # si era cabeza de una rama, la cabeza pasa a ser su siguiente
+    
     for i, cab in enumerate(cabezas):
         if cab is objetivo:
             cabezas[i] = objetivo.liga
 
-    # la lista principal (posición 0) se conserva aunque quede vacía
+   
     cabezas[:] = [c for i, c in enumerate(cabezas) if i == 0 or c is not None]
     print(f"Se eliminó el nodo '{dato}'.")
 
 
-# ---------------------- MENÚ ----------------------
 
 def menu(cabezas):
     while True:
@@ -217,6 +216,6 @@ def menu(cabezas):
 
 
 if __name__ == "__main__":
-    cabezas = [None]     # lista principal vacía; las ramas se agregan después
+    cabezas = [None]    
     print("Lista vacía. Use el menú para insertar nodos.")
     menu(cabezas)
